@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Danish in Practice</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#inicio" aria-label="Go to the start">
+        <span class="brand-mark">DK</span>
+        <span>
+          <strong>Danish in Practice</strong>
+          <small>phrase, situation, repetition</small>
+        </span>
+      </a>
+      <nav class="topnav" aria-label="Main navigation">
+        <a href="#roteiro">Roadmap</a>
+        <a href="#verbos">Common verbs</a>
+        <a href="#adjetivos">Adjectives</a>
+        <a href="#plano">Study plan</a>
+        <a href="#modulos">Modules</a>
+        <a href="#flashcards">Flashcards</a>
+        <a href="#quiz">Quiz</a>
+        <a href="#treino">Training</a>
+      </nav>
+    </header>
+
+    <main id="inicio">
+      <section class="hero">
+        <div class="hero-content">
+          <p class="eyebrow">A complete guide to study and get by in Denmark</p>
+          <h1>Learn Danish through patterns you can use today.</h1>
+          <p class="hero-copy">
+            A study site built from your documents, with survival phrases,
+            essential grammar, vocabulary, dialogues, daily review, flashcards and tests.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#roteiro">Start studying</a>
+            <a class="button secondary" href="#cheatsheet">Quick cheat sheet</a>
+          </div>
+        </div>
+        <aside class="study-panel" aria-label="Progress panel">
+          <div>
+            <span class="panel-label">Saved progress</span>
+            <strong id="progressText">0%</strong>
+          </div>
+          <div class="progress-track" aria-hidden="true">
+            <span id="progressBar"></span>
+          </div>
+          <p id="dailyPrompt">Check today's activities to build consistency.</p>
+        </aside>
+      </section>
+
+      <section class="quick-tools" aria-label="Quick tools">
+        <label class="search-box">
+          <span>Search</span>
+          <input id="searchInput" type="search" placeholder="Ex.: restaurant, past tense, jeg kan..." />
+        </label>
+        <div class="tool-stat">
+          <strong>17</strong>
+          <span>topics</span>
+        </div>
+        <div class="tool-stat">
+          <strong>19</strong>
+          <span>sentence patterns</span>
+        </div>
+        <div class="tool-stat">
+          <strong>30 min</strong>
+          <span>daily review</span>
+        </div>
+      </section>
+
+      <section id="verbos" class="section verb-section">
+        <div class="section-heading">
+          <p class="eyebrow">Start here</p>
+          <h2>The most common Danish verbs</h2>
+          <p>Learn these first. Danish normally uses <strong>vil + infinitive</strong> for the future: <em>jeg vil spise</em> = “I will eat”.</p>
+        </div>
+        <div class="verb-table-wrap" role="region" aria-label="Common Danish verbs in present, past and future" tabindex="0">
+          <table class="verb-table">
+            <thead>
+              <tr>
+                <th>Infinitive</th>
+                <th>Present</th>
+                <th>Past</th>
+                <th>Future (jeg vil...)</th>
+                <th>Meaning</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>at være</td><td>er</td><td>var</td><td>være</td><td>to be</td></tr>
+              <tr><td>at have</td><td>har</td><td>havde</td><td>have</td><td>to have</td></tr>
+              <tr><td>at gøre</td><td>gør</td><td>gjorde</td><td>gøre</td><td>to do / make</td></tr>
+              <tr><td>at gå</td><td>går</td><td>gik</td><td>gå</td><td>to go / walk</td></tr>
+              <tr><td>at komme</td><td>kommer</td><td>kom</td><td>komme</td><td>to come</td></tr>
+              <tr><td>at sige</td><td>siger</td><td>sagde</td><td>sige</td><td>to say</td></tr>
+              <tr><td>at se</td><td>ser</td><td>så</td><td>se</td><td>to see</td></tr>
+              <tr><td>at vide</td><td>ved</td><td>vidste</td><td>vide</td><td>to know</td></tr>
+              <tr><td>at tage</td><td>tager</td><td>tog</td><td>tage</td><td>to take</td></tr>
+              <tr><td>at give</td><td>giver</td><td>gav</td><td>give</td><td>to give</td></tr>
+              <tr><td>at finde</td><td>finder</td><td>fandt</td><td>finde</td><td>to find</td></tr>
+              <tr><td>at spise</td><td>spiser</td><td>spiste</td><td>spise</td><td>to eat</td></tr>
+              <tr><td>at drikke</td><td>drikker</td><td>drak</td><td>drikke</td><td>to drink</td></tr>
+              <tr><td>at tale</td><td>taler</td><td>talte</td><td>tale</td><td>to speak</td></tr>
+              <tr><td>at lære</td><td>lærer</td><td>lærte</td><td>lære</td><td>to learn</td></tr>
+              <tr><td>at arbejde</td><td>arbejder</td><td>arbejdede</td><td>arbejde</td><td>to work</td></tr>
+              <tr><td>at bo</td><td>bor</td><td>boede</td><td>bo</td><td>to live</td></tr>
+              <tr><td>at ville</td><td>vil</td><td>ville</td><td>ville</td><td>to want / will</td></tr>
+              <tr><td>at kunne</td><td>kan</td><td>kunne</td><td>kunne</td><td>can / be able to</td></tr>
+              <tr><td>at skulle</td><td>skal</td><td>skulle</td><td>skulle</td><td>must / will have to</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="verb-note"><strong>Simple model:</strong> Jeg spiser nu. (I eat now.) · Jeg spiste i går. (I ate yesterday.) · Jeg vil spise i morgen. (I will eat tomorrow.)</p>
+      </section>
+
+      <section id="adjetivos" class="section adjective-section">
+        <div class="section-heading">
+          <p class="eyebrow">Describe the world</p>
+          <h2>Essential Danish adjectives</h2>
+          <p>Learn them in opposites and use them to describe yourself, people, places, food and everyday situations.</p>
+        </div>
+        <div class="adjective-grid">
+          <article><strong>stor</strong><span>big</span><em>↔ lille — small</em></article>
+          <article><strong>god</strong><span>good</span><em>↔ dårlig — bad</em></article>
+          <article><strong>ny</strong><span>new</span><em>↔ gammel — old</em></article>
+          <article><strong>dyr</strong><span>expensive</span><em>↔ billig — cheap</em></article>
+          <article><strong>varm</strong><span>warm / hot</span><em>↔ kold — cold</em></article>
+          <article><strong>hurtig</strong><span>fast</span><em>↔ langsom — slow</em></article>
+          <article><strong>let</strong><span>easy / light</span><em>↔ svær — difficult</em></article>
+          <article><strong>glad</strong><span>happy</span><em>↔ ked af det — sad</em></article>
+          <article><strong>træt</strong><span>tired</span><em>↔ frisk — fresh / energetic</em></article>
+          <article><strong>ren</strong><span>clean</span><em>↔ beskidt — dirty</em></article>
+          <article><strong>smuk</strong><span>beautiful</span><em>↔ grim — ugly</em></article>
+          <article><strong>åben</strong><span>open</span><em>↔ lukket — closed</em></article>
+        </div>
+        <div class="adjective-examples">
+          <p><strong>Jeg er træt, men glad.</strong><span>I am tired, but happy.</span></p>
+          <p><strong>Det er en stor by.</strong><span>It is a big city.</span></p>
+          <p><strong>Kaffen er varm.</strong><span>The coffee is hot.</span></p>
+          <p><strong>Dansk er svært, men sjovt.</strong><span>Danish is difficult, but fun.</span></p>
+        </div>
+      </section>
+
+      <section id="roteiro" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Method</p>
+          <h2>Layered study roadmap</h2>
+        </div>
+        <div class="steps-grid">
+          <article>
+            <span>1</span>
+            <h3>Recognize</h3>
+            <p>Read Danish to English, then English to Danish.</p>
+            <strong>Goal: recognize words without translating everything.</strong>
+          </article>
+          <article>
+            <span>2</span>
+            <h3>Speak</h3>
+            <p>Read phrases out loud and repeat them without looking.</p>
+            <strong>Goal: produce basic sentences.</strong>
+          </article>
+          <article>
+            <span>3</span>
+            <h3>Substitute</h3>
+            <p>Swap names, places, foods and verbs inside the same pattern.</p>
+            <strong>Goal: create new sentences.</strong>
+          </article>
+          <article>
+            <span>4</span>
+            <h3>Survive</h3>
+            <p>Use real expressions for school, shopping, transport, family and the city.</p>
+            <strong>Goal: get by in real situations.</strong>
+          </article>
+          <article>
+            <span>5</span>
+            <h3>Automate</h3>
+            <p>Review short phrases every day until you answer without thinking in another language.</p>
+            <strong>Goal: speak faster.</strong>
+          </article>
+        </div>
+      </section>
+
+      <section id="plano" class="section study-plan-section">
+        <div class="section-heading">
+          <p class="eyebrow">Your 60 minutes</p>
+          <h2>One hour a day, one small step at a time.</h2>
+          <p>Follow the same six blocks every day. You do not need to learn everything at once: the weekly focus tells you what to use in the practice blocks.</p>
+        </div>
+        <div class="hour-plan" aria-label="One-hour Danish study plan">
+          <article>
+            <span>10 min</span>
+            <h3>Review</h3>
+            <p>Flip 10–15 old flashcards. Say the Danish answer before you turn each card.</p>
+          </article>
+          <article>
+            <span>10 min</span>
+            <h3>Learn</h3>
+            <p>Read one module card. Choose only 5 new words or 2 useful phrases.</p>
+          </article>
+          <article>
+            <span>10 min</span>
+            <h3>Verbs</h3>
+            <p>Practise one verb in the present and past. Make three short sentences with it.</p>
+          </article>
+          <article>
+            <span>10 min</span>
+            <h3>Questions</h3>
+            <p>Choose one question word, ask three questions, then answer them out loud.</p>
+          </article>
+          <article>
+            <span>10 min</span>
+            <h3>Build and speak</h3>
+            <p>Use the sentence builder to create five sentences about your own life. Listen and repeat.</p>
+          </article>
+          <article>
+            <span>10 min</span>
+            <h3>Check and save</h3>
+            <p>Do two quiz questions. Write down one mistake and one sentence you want to remember.</p>
+          </article>
+        </div>
+        <div class="weekly-focus">
+          <div>
+            <strong>Monday</strong><span>Greetings, pronouns and introductions</span>
+          </div>
+          <div>
+            <strong>Tuesday</strong><span>Question words and essential verbs</span>
+          </div>
+          <div>
+            <strong>Wednesday</strong><span>Food, shopping and restaurants</span>
+          </div>
+          <div>
+            <strong>Thursday</strong><span>City, transport and directions</span>
+          </div>
+          <div>
+            <strong>Friday</strong><span>School, work, routine and social life</span>
+          </div>
+          <div>
+            <strong>Saturday</strong><span>Past tense, connectors and longer sentences</span>
+          </div>
+          <div>
+            <strong>Sunday</strong><span>Review all flashcards, redo the quiz and speak freely for 10 minutes</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="modulos" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Content</p>
+          <h2>Complete modules</h2>
+        </div>
+        <div id="moduleGrid" class="module-grid"></div>
+      </section>
+
+      <section id="modelos" class="section split">
+        <div class="section-heading">
+          <p class="eyebrow">Speaking base</p>
+          <h2>The 12 patterns that unlock sentences</h2>
+          <p>Master the structure, then replace the words. This is where studying turns into conversation.</p>
+        </div>
+        <div id="patternList" class="pattern-list"></div>
+      </section>
+
+      <section id="flashcards" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Active recall</p>
+          <h2>Flashcards</h2>
+        </div>
+        <div class="flashcard-tool">
+          <div class="flashcard" id="flashcard" tabindex="0" role="button" aria-label="Flip flashcard">
+            <span id="flashTag">Survival</span>
+            <strong id="flashFront">Hej!</strong>
+            <p id="flashBack">Hello!</p>
+          </div>
+          <div class="controls">
+            <button class="button secondary" id="prevCard" type="button">Previous</button>
+            <button class="button primary" id="flipCard" type="button">Flip</button>
+            <button class="button secondary" id="nextCard" type="button">Next</button>
+            <button class="button secondary" id="speakCard" type="button">Listen</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="quiz" class="section quiz-section">
+        <div class="section-heading">
+          <p class="eyebrow">Quick test</p>
+          <h2>Survival quiz</h2>
+          <p>Answer, check the key and repeat until it feels automatic.</p>
+        </div>
+        <div id="quizBox" class="quiz-box"></div>
+        <div class="controls">
+          <button class="button primary" id="checkQuiz" type="button">Check</button>
+          <button class="button secondary" id="resetQuiz" type="button">Clear</button>
+        </div>
+        <p id="quizResult" class="quiz-result" aria-live="polite"></p>
+      </section>
+
+      <section id="treino" class="section split">
+        <div class="section-heading">
+          <p class="eyebrow">60-minute routine</p>
+          <h2>Daily checklist</h2>
+          <p>Tick each block after studying. If you only have a little time, complete one block and continue tomorrow.</p>
+        </div>
+        <div class="checklist" id="dailyChecklist"></div>
+      </section>
+
+      <section class="section split">
+        <div class="section-heading">
+          <p class="eyebrow">Guided practice</p>
+          <h2>Sentence builder</h2>
+          <p>Choose a pattern, swap the words and read it out loud.</p>
+        </div>
+        <div class="builder">
+          <label>
+            Pattern
+            <select id="builderPattern"></select>
+          </label>
+          <label>
+            Word or complement
+            <input id="builderWord" type="text" value="kaffe" />
+          </label>
+          <output id="builderOutput">Jeg vil gerne have kaffe.</output>
+          <button class="button primary" id="speakBuilder" type="button">Listen to sentence</button>
+        </div>
+      </section>
+
+      <section id="cheatsheet" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Memorize first</p>
+          <h2>Essential cheat sheet</h2>
+        </div>
+        <div id="cheatSheet" class="cheat-grid"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <strong>Focus:</strong> phrase → situation → repetition → automation.
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
