@@ -59,7 +59,7 @@
           <input id="searchInput" type="search" placeholder="Ex.: restaurant, past tense, jeg kan..." />
         </label>
         <div class="tool-stat">
-          <strong>17</strong>
+          <strong>18</strong>
           <span>topics</span>
         </div>
         <div class="tool-stat">
@@ -272,6 +272,7 @@
           <div class="flashcard" id="flashcard" tabindex="0" role="button" aria-label="Flip flashcard">
             <span id="flashTag">Survival</span>
             <strong id="flashFront">Hej!</strong>
+            <button class="audio-button" id="speakCardInline" type="button" data-speak data-speech="Hej!" aria-label="Ouvir em dinamarquês" title="Ouvir em dinamarquês">🔊</button>
             <p id="flashBack">Hello!</p>
           </div>
           <div class="controls">
@@ -321,7 +322,10 @@
             Word or complement
             <input id="builderWord" type="text" value="kaffe" />
           </label>
-          <output id="builderOutput">Jeg vil gerne have kaffe.</output>
+          <div class="danish-with-audio">
+            <output id="builderOutput">Jeg vil gerne have kaffe.</output>
+            <button class="audio-button" id="speakBuilderInline" type="button" data-speak data-speech="Jeg vil gerne have kaffe." aria-label="Ouvir em dinamarquês" title="Ouvir em dinamarquês">🔊</button>
+          </div>
           <button class="button primary" id="speakBuilder" type="button">Listen to sentence</button>
         </div>
       </section>

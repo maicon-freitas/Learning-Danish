@@ -221,6 +221,23 @@ const modules = [
       "Hvad laver du i weekenden? — What are you doing at the weekend?"
     ],
     tags: ["routine", "home", "feelings"]
+  },
+  {
+    icon: "18",
+    title: "Feelings and Personal Connections",
+    summary: "Warm, everyday phrases for sharing affection, compliments, doubts and appreciation.",
+    items: [
+      "Jeg elsker dig. — I love you.",
+      "Du er smuk. — You are beautiful.",
+      "Jeg ved ikke. — I do not know.",
+      "Jeg savner dig. — I miss you.",
+      "Du betyder meget for mig. — You mean a lot to me.",
+      "Jeg er glad for dig. — I am fond of you / I am happy about you.",
+      "at elske / elsker / elskede — love / loves / loved",
+      "at savne / savner / savnede — miss / misses / missed",
+      "at vide / ved / vidste — know / knows / knew"
+    ],
+    tags: ["feelings", "relationships", "everyday Danish"]
   }
 ];
 
@@ -243,7 +260,9 @@ const patterns = [
   ["Hvordan + verb + subject?", "Hvordan kommer jeg til centrum?", "How do I get to the centre?"],
   ["Jeg + present verb + time.", "Jeg arbejder i dag.", "I work today."],
   ["I går + past tense.", "I går lavede jeg mad.", "Yesterday I cooked."],
-  ["Jeg synes, at + sentence.", "Jeg synes, at dansk er svært.", "I think Danish is difficult."]
+  ["Jeg synes, at + sentence.", "Jeg synes, at dansk er svært.", "I think Danish is difficult."],
+  ["Jeg elsker + person.", "Jeg elsker dig.", "I love you."],
+  ["Du er + adjective.", "Du er smuk.", "You are beautiful."]
 ];
 
 const flashcards = [
@@ -276,7 +295,12 @@ const flashcards = [
   ["Verb", "Jeg kommer fra Brasilien.", "I come from Brazil."],
   ["Verb", "Vi laver mad sammen.", "We cook together."],
   ["Routine", "Jeg står op klokken syv.", "I get up at seven o'clock."],
-  ["Feeling", "Jeg er glad i dag.", "I am happy today."]
+  ["Feeling", "Jeg er glad i dag.", "I am happy today."],
+  ["Feelings", "Jeg elsker dig.", "I love you."],
+  ["Feelings", "Du er smuk.", "You are beautiful."],
+  ["Feelings", "Jeg ved ikke.", "I do not know."],
+  ["Feelings", "Jeg savner dig.", "I miss you."],
+  ["Feelings", "Du betyder meget for mig.", "You mean a lot to me."]
 ];
 
 const quiz = [
@@ -329,7 +353,12 @@ const cheatSheet = [
   ["Jeg går hjem.", "I am going home."],
   ["Jeg arbejder i dag.", "I work today."],
   ["Jeg laver mad.", "I cook / make food."],
-  ["Jeg synes, at...", "I think that..."]
+  ["Jeg synes, at...", "I think that..."],
+  ["Jeg elsker dig.", "I love you."],
+  ["Du er smuk.", "You are beautiful."],
+  ["Jeg ved ikke.", "I do not know."],
+  ["Jeg savner dig.", "I miss you."],
+  ["Du betyder meget for mig.", "You mean a lot to me."]
 ];
 
 const moduleGrid = document.querySelector("#moduleGrid");
@@ -341,6 +370,15 @@ const progressText = document.querySelector("#progressText");
 const progressBar = document.querySelector("#progressBar");
 const dailyChecklistKey = "danish-checklist";
 const dailyChecklistDateKey = "danish-checklist-date";
+
+function audioButton(text) {
+  return `<button class="audio-button" type="button" data-speak data-speech="${text.replace(/&/g, "&amp;").replace(/"/g, "&quot;")}" aria-label="Ouvir em dinamarquês" title="Ouvir em dinamarquês">🔊</button>`;
+}
+
+function danishItem(text) {
+  const [danish, translation] = text.split(" — ");
+  return `<span class="danish-with-audio"><span class="danish-text">${danish}</span>${audioButton(danish)}${translation ? `<span class="translation"> — ${translation}</span>` : ""}</span>`;
+}
 
 function getLocalDateKey(date = new Date()) {
   const year = date.getFullYear();
@@ -367,7 +405,7 @@ function renderModules() {
       </div>
       <h3>${module.title}</h3>
       <p>${module.summary}</p>
-      <ul>${module.items.map((item) => `<li>${item}</li>`).join("")}</ul>
+      <ul>${module.items.map((item) => `<li>${danishItem(item)}</li>`).join("")}</ul>
     </article>
   `).join("");
 }
@@ -376,10 +414,10 @@ function renderPatterns() {
   patternList.innerHTML = patterns.map(([rule, example, meaning]) => `
     <li>
       <div>
-        <strong>${rule}</strong>
+        <span class="danish-with-audio"><strong class="danish-text">${rule}</strong>${audioButton(rule)}</span>
         <span>${meaning}</span>
       </div>
-      <strong>${example}</strong>
+      <span class="danish-with-audio"><strong class="danish-text">${example}</strong>${audioButton(example)}</span>
     </li>
   `).join("");
 }
@@ -387,7 +425,7 @@ function renderPatterns() {
 function renderCheatSheet() {
   cheatGrid.innerHTML = cheatSheet.map(([dk, en]) => `
     <article class="cheat-item">
-      <strong>${dk}</strong>
+      <span class="danish-with-audio"><strong class="danish-text">${dk}</strong>${audioButton(dk)}</span>
       <span>${en}</span>
     </article>
   `).join("");
@@ -450,6 +488,7 @@ function renderCard() {
   flashTag.textContent = tag;
   flashFront.textContent = front;
   flashBack.textContent = back;
+  document.querySelector("#speakCardInline").dataset.speech = front;
   flashcard.classList.toggle("flipped", flipped);
 }
 
@@ -468,11 +507,45 @@ function speak(text) {
   speechSynthesis.speak(utterance);
 }
 
+document.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-speak]");
+  if (!button) return;
+  const text = button.dataset.speech || button.closest(".danish-with-audio")?.querySelector(".danish-text")?.textContent;
+  if (text) speak(text);
+});
+
+function addStaticAudioButtons() {
+  document.querySelectorAll(".verb-table td:not(:last-child)").forEach((cell) => {
+    cell.insertAdjacentHTML("beforeend", audioButton(cell.textContent.trim()));
+  });
+
+  document.querySelectorAll(".adjective-grid article").forEach((card) => {
+    const adjective = card.querySelector("strong");
+    const opposite = card.querySelector("em");
+    adjective.insertAdjacentHTML("afterend", audioButton(adjective.textContent));
+    opposite.insertAdjacentHTML("afterend", audioButton(opposite.textContent.replace("↔", "").split(" — ")[0].trim()));
+  });
+
+  document.querySelectorAll(".adjective-examples strong").forEach((example) => {
+    example.classList.add("danish-with-audio", "danish-text");
+    example.insertAdjacentHTML("afterend", audioButton(example.textContent));
+  });
+
+  document.querySelectorAll(".verb-section .section-heading strong, .verb-section .section-heading em").forEach((expression) => {
+    expression.classList.add("danish-with-audio");
+    expression.insertAdjacentHTML("afterend", audioButton(expression.textContent));
+  });
+
+  const verbNote = document.querySelector(".verb-note");
+  verbNote.insertAdjacentHTML("beforeend", audioButton("Jeg spiser nu. Jeg spiste i går. Jeg vil spise i morgen."));
+}
+
 document.querySelector("#flipCard").addEventListener("click", () => {
   flipped = !flipped;
   renderCard();
 });
-flashcard.addEventListener("click", () => {
+flashcard.addEventListener("click", (event) => {
+  if (event.target.closest("[data-speak]")) return;
   flipped = !flipped;
   renderCard();
 });
@@ -490,12 +563,16 @@ document.querySelector("#speakCard").addEventListener("click", () => speak(flash
 const quizBox = document.querySelector("#quizBox");
 const quizResult = document.querySelector("#quizResult");
 
+function hasDanishAnswer(answer) {
+  return /[æøå]|^(jeg|hvor|hvad|kan|må|hvem|hvornår|hvordan|hvis|spiste|lavede|hvor)$/i.test(answer);
+}
+
 function renderQuiz() {
   quizBox.innerHTML = quiz.map(([question, answer], index) => `
     <div class="quiz-question">
       <label for="quiz-${index}">${index + 1}. ${question}</label>
       <input id="quiz-${index}" type="text" autocomplete="off" />
-      <span class="quiz-answer">Answer: ${answer}</span>
+      <span class="quiz-answer">Answer: ${answer}${hasDanishAnswer(answer) ? audioButton(answer) : ""}</span>
     </div>
   `).join("");
   quizResult.textContent = "";
@@ -537,7 +614,9 @@ const builderTemplates = [
   ["Hvornår + verb + subject?", "Hvornår {x}?"],
   ["Hvorfor + verb + subject?", "Hvorfor {x}?"],
   ["Hvordan + verb + subject?", "Hvordan {x}?"],
-  ["Jeg synes, at + sentence", "Jeg synes, at {x}."]
+  ["Jeg synes, at + sentence", "Jeg synes, at {x}."],
+  ["Jeg elsker + person", "Jeg elsker {x}."],
+  ["Du er + adjective", "Du er {x}."]
 ];
 
 function renderBuilderOptions() {
@@ -547,7 +626,9 @@ function renderBuilderOptions() {
 function updateBuilder() {
   const template = builderTemplates[Number(builderPattern.value)][1];
   const word = builderWord.value.trim() || "...";
-  builderOutput.textContent = template.replace("{x}", word);
+  const sentence = template.replace("{x}", word);
+  builderOutput.textContent = sentence;
+  document.querySelector("#speakBuilderInline").dataset.speech = sentence;
 }
 
 builderPattern.addEventListener("change", updateBuilder);
@@ -563,3 +644,4 @@ renderCard();
 renderQuiz();
 renderBuilderOptions();
 updateBuilder();
+addStaticAudioButtons();

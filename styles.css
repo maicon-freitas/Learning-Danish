@@ -195,6 +195,34 @@ h3 {
   transform: translateY(-1px);
 }
 
+.danish-with-audio {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.audio-button {
+  display: inline-grid;
+  place-items: center;
+  width: 1.85rem;
+  height: 1.85rem;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+  font-size: 0.85rem;
+  line-height: 1;
+}
+
+.audio-button:hover,
+.audio-button:focus-visible {
+  border-color: var(--blue);
+  background: var(--blue);
+  outline: none;
+}
+
 .study-panel,
 .quick-tools,
 .module-card,
