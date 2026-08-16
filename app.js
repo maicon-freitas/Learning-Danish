@@ -368,6 +368,7 @@ const cheatGrid = document.querySelector("#cheatSheet");
 const checklistBox = document.querySelector("#dailyChecklist");
 const progressText = document.querySelector("#progressText");
 const progressBar = document.querySelector("#progressBar");
+const dailyPrompt = document.querySelector("#dailyPrompt");
 const dailyChecklistKey = "danish-checklist";
 const dailyChecklistDateKey = "danish-checklist-date";
 
@@ -454,6 +455,9 @@ function updateProgress() {
   localStorage.setItem(dailyChecklistKey, JSON.stringify(checked));
   progressText.textContent = `${percentage}%`;
   progressBar.style.width = `${percentage}%`;
+  dailyPrompt.textContent = percentage === 100
+    ? "Você concluiu o estudo de hoje. Amanhã, volte para iniciar uma nova lição com conteúdo novo."
+    : "Conclua os blocos de hoje para finalizar sua sessão de estudo.";
 }
 
 function scheduleDailyReset() {
