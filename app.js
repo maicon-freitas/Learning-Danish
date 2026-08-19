@@ -535,6 +535,16 @@ function addStaticAudioButtons() {
     example.insertAdjacentHTML("afterend", audioButton(example.textContent));
   });
 
+  document.querySelectorAll(".object-grid li strong").forEach((object) => {
+    object.classList.add("danish-with-audio", "danish-text");
+    object.insertAdjacentHTML("afterend", audioButton(object.textContent));
+  });
+
+  document.querySelectorAll(".object-note em").forEach((example) => {
+    example.classList.add("danish-with-audio", "danish-text");
+    example.insertAdjacentHTML("afterend", audioButton(example.textContent));
+  });
+
   document.querySelectorAll(".verb-section .section-heading strong, .verb-section .section-heading em").forEach((expression) => {
     expression.classList.add("danish-with-audio");
     expression.insertAdjacentHTML("afterend", audioButton(expression.textContent));
